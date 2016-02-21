@@ -5,6 +5,12 @@
  * Created on : 02/20/2016
  *
  * NOTE TO CO-DEVELOPERS : Mention enhancements with date and name.
+ 
+ *************************ENHANCEMENT************************************
+ * getBrowseCatalog()
+ * Vivek Ramji
+ * 02/21/2016
+ * ************************************************************************
  */
 
 
@@ -16,6 +22,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.*;
 
 import org.springframework.stereotype.Component;
 
@@ -60,6 +67,31 @@ public class MovieDao {
 
 			return mv;
 	}
+	
+	public List<String> getBrowseCatalog()
+	{
+		List<String> catalogList = new ArrayList<String>();
+		ResultSet resultSet = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			mConnection = DriverManager.getConnection(connectionString);
+			String query = "select title from movie_details";
+				mStatement = mConnection.createStatement();
+				resultSet = mStatement.executeQuery(query);
+				while(resultSet.next()) {
+						catalogList.add(resultSet.getString("title"));
+					}
+			} catch (Exception ex) {
+				
+				ex.printStackTrace();
+
+			} finally {
+				close();
+			}
+
+        return catalogList;		
+	}
+
 
 	private void close() {
 		try {
