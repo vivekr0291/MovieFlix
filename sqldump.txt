@@ -1,0 +1,9 @@
+create database movie;
+use movie;
+create table movie_details (title varchar(50) NOT NULL, year int , rated varchar(7), released varchar(25) , 
+        runtime varchar(10), genre varchar(200), director varchar(50) , writer varchar(500) ,
+        actors varchar(1000), plot varchar(1500), language varchar(15), country varchar(10),
+        awards varchar(50), poster varchar(500), metascore int, imdb_rating float, imdb_votes int,
+        imdb_id varchar(25) PRIMARY KEY, type varchar(15));
+
+select * from movie_details;     
