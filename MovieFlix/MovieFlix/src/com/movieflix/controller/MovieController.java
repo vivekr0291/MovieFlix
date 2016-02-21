@@ -5,6 +5,12 @@
  * Created on : 02/20/2016
  * 
  * NOTE TO CO-DEVELOPERS : Mention enhancements with date and name.
+ 
+ * *************************ENHANCEMENT************************************
+ * browseCatalog()
+ * Vivek Ramji
+ * 02/21/2016
+ * ************************************************************************
  */
 
 
@@ -34,7 +40,10 @@ public class MovieController {
 	public List<String> browseCatalog() {
 		
 		List<String> ne = new ArrayList<String>();
-		return ne;
+		ne = movieDao.getBrowseCatalog();
+		ResponseEntity<List<String>> response = new ResponseEntity<List<String>>(ne, HttpStatus.OK);
+                //response.getStatusCode();
+		return response;
 		
 	}
 	
