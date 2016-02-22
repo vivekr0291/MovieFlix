@@ -1,6 +1,7 @@
 /*
  * MovieFlix Project_Team Helios
  * Class MovieDao
+ * - getTitleDetails(String)
  * Created by : Vivek Ramji
  * Created on : 02/20/2016
  *
@@ -10,6 +11,11 @@
  * getBrowseCatalog()
  * Vivek Ramji
  * 02/21/2016
+ * ************************************************************************
+ * *************************ENHANCEMENT************************************
+ * titleRatings(String)
+ * Vivek Ramji
+ * 02/22/2016
  * ************************************************************************
  */
 
@@ -91,6 +97,28 @@ public class MovieDao {
 
         return catalogList;		
 	}
+	
+	 public Float getTitleRatings(String imdb_id)
+    	{
+    		Float rating = 0.0F;
+    		ResultSet resultSet = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			mConnection = DriverManager.getConnection(connectionString);
+			String query = "select imdb_rating from movie_details where imdb_id like '" + imdb_id + "'";
+				mStatement = mConnection.createStatement();
+				resultSet = mStatement.executeQuery(query);
+				rating = resultSet.getFloat("imdb_rating");
+			} catch (Exception ex) {
+				
+				ex.printStackTrace();
+
+			} finally {
+				close();
+			}
+
+    	return rating;
+    	}
 
 
 	private void close() {
