@@ -28,7 +28,7 @@ MovieController.java
   
 MovieDao.java
   + getTitleRatings()
-********************************************************
+
 
 
 
