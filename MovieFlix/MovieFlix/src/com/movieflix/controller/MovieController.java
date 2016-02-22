@@ -1,6 +1,7 @@
 /*
  * MovieFlix Project_Team Helios
  * Class MovieController
+ * - getTitleDetails(String)
  * Created by : Vivek Ramji
  * Created on : 02/20/2016
  * 
@@ -10,6 +11,11 @@
  * browseCatalog()
  * Vivek Ramji
  * 02/21/2016
+ * ************************************************************************
+ * *************************ENHANCEMENT************************************
+ * titleRatings(String)
+ * Vivek Ramji
+ * 02/22/2016
  * ************************************************************************
  */
 
@@ -64,11 +70,11 @@ public class MovieController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "titleRatings")
-	public int titleRatings(String imdb_id) {
-		
-		int rating = 0;
-		
-		return rating;
+	public ResponseEntity<Float> titleRatings(String imdb_id) {
+	        Float rating = 0.0F;
+		rating = movieDao.getTitleRatings(imdb_id);
+		ResponseEntity<Float> response = new ResponseEntity<Float>(rating, HttpStatus.OK);
+		return response;
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "commentOnTitle")
