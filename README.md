@@ -16,4 +16,19 @@ MovieDao.java
   + getBrowseCatalog()
   
 *******************************************************
+Updates and commits made by : Vivek Ramji
+Commit Dates : 2/22/2016
+Status : Completed 
+
+Updated Working Modules
+
+MovieController.java
+  + titleRatings()
+  
+  
+MovieDao.java
+  + getTitleRatings()
+********************************************************
+
+
 
